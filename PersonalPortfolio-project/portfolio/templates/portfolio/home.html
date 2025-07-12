@@ -1,0 +1,30 @@
+{% extends 'portfolio/base.html' %}
+{% block content %}
+{% load static %}
+
+<!-- Title -->
+<h1 class="text-6xl font-extrabold text-center text-indigo-700 mb-8">
+  FUN FACTS
+</h1>
+
+<!-- Earth Image -->
+<div class="flex justify-center mb-10">
+  <a href="https://earth.google.com/web/" target="_blank">
+    <img src="{% static 'portfolio/earth.png' %}" alt="Earth" class="h-48 rounded-lg shadow-lg hover:scale-105 transition-transform duration-300" />
+  </a>
+</div>
+
+<!-- Projects Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+  {% for project in projects %}
+    <div class="bg-white rounded-xl shadow-md p-4 text-center">
+      <h2 class="text-xl font-semibold mb-2">{{ project.name }}</h2>
+      <p class="text-gray-600 mb-4">{{ project.description }}</p>
+      <a href="{{ project.url }}" target="_blank">
+        <img src="{{ project.image.url }}" alt="{{ project.name }}" class="h-48 w-full object-cover rounded-md hover:opacity-90 transition duration-300" />
+      </a>
+    </div>
+  {% endfor %}
+</div>
+
+{% endblock %}
